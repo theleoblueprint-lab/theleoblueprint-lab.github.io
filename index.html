@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lichtblick</title>
+<meta name="description" content="Sprüche und schöne Momente — gesammelt, damit sie wiederkommen.">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<script>
+  // React liegt im App-Ordner, damit die App ohne Internet startet.
+  window.__resources = {
+    "https://unpkg.com/react@18.3.1/umd/react.production.min.js": "assets/react.production.min.js",
+    "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "assets/react-dom.production.min.js"
+  };
+</script>
+<script src="assets/dc-runtime.js"></script>
+</head>
+
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#161826">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Lichtblick">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>/* Nocturne — design-system tokens and component classes. This file is the source of truth for the system's look; retune it here and see readme.md. */
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/inter-cyrillic-ext.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/inter-cyrillic.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/inter-greek-ext.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/inter-greek.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/inter-vietnamese.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/inter-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/inter-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/inter-cyrillic-ext.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/inter-cyrillic.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/inter-greek-ext.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/inter-greek.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/inter-vietnamese.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/inter-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/inter-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/inter-cyrillic-ext.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/inter-cyrillic.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/inter-greek-ext.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/inter-greek.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/inter-vietnamese.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/inter-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/inter-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/inter-cyrillic-ext.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/inter-cyrillic.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/inter-greek-ext.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/inter-greek.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/inter-vietnamese.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/inter-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/inter-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+:root {
+  --color-bg: #161826;
+  --color-surface: #232532;
+  --color-text: #e9e9ed;
+  --color-accent: #9184d9; /* review round 7 (Barron): the accent moves to
+     the product's blurple — OKLCH hue 289.2, the hue of the app's own Pro
+     accent (#9a8fe0, --om-accent-pro) — at the same lightness the steel
+     accent held (L 0.660, so the documented ratios survive) and chroma
+     in the product blurple's own range (its token sits at C 0.118; the
+     accent takes 0.125, from the old steel's 0.030):
+     the accent now reads as an accent rather than another neutral. */
+  --color-accent-2: #a7a1db; /* the machine-derived stand-in follows: same
+     hue, same L 0.734, chroma at the same 2:3 proportion it held */
+  --color-divider: color-mix(in srgb, #e9e9ed 16%, transparent);
+
+  /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
+     same step of any role matches the others in visual value. */
+  --color-neutral-100: #f3f5fe;
+  --color-neutral-200: #e4e7f5;
+  --color-neutral-300: #cfd3e5;
+  --color-neutral-400: #b2b6ca;
+  --color-neutral-500: #9397ab;
+  --color-neutral-600: #75798c;
+  --color-neutral-700: #595d6c;
+  --color-neutral-800: #3f424d;
+  --color-neutral-900: #292b31;
+
+  --color-accent-100: #f5f4ff;
+  --color-accent-200: #e7e5fe;
+  --color-accent-300: #d2cefd;
+  --color-accent-400: #b5abfc;
+  --color-accent-500: #968ae0;
+  --color-accent-600: #796cbf;
+  --color-accent-700: #5d5294;
+  --color-accent-800: #423a6a;
+  --color-accent-900: #2b2741;
+
+  --color-accent-2-100: #f5f4ff;
+  --color-accent-2-200: #e7e5fe;
+  --color-accent-2-300: #d2cefd;
+  --color-accent-2-400: #b5afe8;
+  --color-accent-2-500: #9690c9;
+  --color-accent-2-600: #7972a9;
+  --color-accent-2-700: #5c5783;
+  --color-accent-2-800: #423e5d;
+  --color-accent-2-900: #2b293a;
+
+  /* Deck section-divider ground — review round 3: saturation as presence.
+     Dividers take a saturated deep indigo (hue 277, the neutral ramp's own
+     family; C 0.094 — written when the accent held C 0.030, before the
+     round-7 blurple raised it past the ground's) with a lighter bloom and
+     a ghost tint of the same hue, while the slide grounds stay
+     desaturated. Deck-scale fills only — not interface colors. */
+  --color-section: #262a60;
+  --color-section-glow: #353b80;
+  --color-section-ghost: #4c5397;
+
+  --font-heading: "Inter", system-ui, sans-serif;
+  --font-heading-weight: 500;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --space-1: 2.8px;
+  --space-2: 5.6px;
+  --space-3: 8.4px;
+  --space-4: 11.2px;
+  --space-6: 16.8px;
+  --space-8: 22.4px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+
+  /* Elevation — derived from the ground: soft ink-tinted shadows on a
+     light theme, a hairline edge + ambient darkness on a dark one. */
+  --shadow-sm: 0 0 0 1px #3f424d;
+  --shadow-md: 0 0 0 1px #595d6c, 0 6px 18px rgba(0,0,0,0.55);
+  --shadow-lg: 0 0 0 1px #9397ab, 0 16px 40px rgba(0,0,0,0.65);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+
+.lighten{mix-blend-mode:lighten;background-color:transparent}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Components — built with the tokens above. Plain CSS
+   on plain HTML: no JavaScript, no build step. Each class is documented in
+   readme.md and demonstrated in foundations/ and components/.
+   ══════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-size: 15px; line-height: 1.55; font-weight: 400; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 var(--space-2);
+}
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+h3 { font-size: 25px; }
+h4 { font-size: 20px; }
+h5 { font-size: 16px; }
+h6 { font-size: 13px; }
+h6 { letter-spacing: 0.08em; text-transform: uppercase; }
+p { margin: 0 0 var(--space-3); }
+a { color: var(--color-accent); text-underline-offset: 3px; }
+img { display: block; max-width: 100%; }
+figure { margin: 0; }
+figcaption {
+  font-size: 11px; margin-top: var(--space-1);
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.text-muted { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+
+/* — rules — */
+/* Rules fade to transparent at both ends instead of stopping cleanly — a
+   Nocturne signature. The ramp is 48px an end (one deck baseline unit),
+   painted from the same divider token. Freestanding rules fade; box
+   outlines, in-control separators, and short accent marks stay solid. */
+.hr {
+  height: 1px; border: 0; margin: var(--space-4) 0;
+  background: linear-gradient(to right,
+    transparent, var(--color-divider) 48px,
+    var(--color-divider) calc(100% - 48px), transparent);
+}
+
+/* — buttons — */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  cursor: pointer; text-decoration: none;
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 14px; line-height: 1.2; color: var(--color-text); /* matches the .input's 14px —
+     the pair sits side by side in sign-up rows */
+  background: transparent; border: 1px solid transparent;
+  padding: var(--space-2) calc(var(--space-3) * 1.2);
+  border-radius: var(--radius-md);
+}
+.btn svg { display: block; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary { color: var(--color-accent); border-color: var(--color-accent); }
+.btn-primary:hover { background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
+.btn-primary:active { background: color-mix(in srgb, var(--color-accent) 22%, transparent); }
+.btn-secondary { border-color: var(--color-divider); }
+.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.btn-secondary:active { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
+.btn-ghost { color: var(--color-accent); padding-inline: var(--space-1); }
+.btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.btn-ghost:active { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+.btn-icon { width: 36px; height: 36px; padding: 0; }
+.btn-block { width: 100%; margin-top: var(--space-2); }
+
+/* — forms — */
+.field > label {
+  display: block; font-size: 12px; margin-bottom: 5px;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+.input {
+  width: 100%; min-height: 36px; padding: 6px 10px; font: inherit;
+  font-size: 14px; color: var(--color-text); caret-color: var(--color-accent);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.input:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+.input:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
+textarea.input { min-height: 90px; resize: vertical; }
+.radio { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; }
+.radio input, .seg-opt input {
+  position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;
+}
+.radio .dot {
+  width: 16px; height: 16px; flex: none; border-radius: 50%;
+  border: 1.5px solid var(--color-divider);
+}
+.radio:hover .dot { border-color: var(--color-accent); }
+.radio input:checked + .dot {
+  border-color: var(--color-accent); background: var(--color-accent);
+  box-shadow: inset 0 0 0 4px var(--color-bg);
+}
+.radio input:focus-visible + .dot { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.seg {
+  display: inline-flex; overflow: hidden;
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.seg-opt {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px; font-size: 13px; cursor: pointer;
+}
+.seg-opt + .seg-opt { border-left: 1px solid var(--color-divider); }
+.seg-opt:has(input:checked) { color: var(--color-accent); box-shadow: inset 0 0 0 1px var(--color-accent); }
+.seg-opt:not(:has(input:checked)):hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.seg-opt:has(input:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+/* — cards — */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-3); border-radius: var(--radius-md); background: var(--color-surface);
+}
+.card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
+.card-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 17px; line-height: 1.2;
+}
+.card-body { margin: 0; font-size: 13px; opacity: 0.8; flex: 1; }
+.card-meta {
+  display: flex; align-items: center; gap: 6px; font-size: 11px;
+  color: color-mix(in srgb, var(--color-text) 50%, transparent);
+}
+.elev-sm { box-shadow: var(--shadow-sm); }
+.elev-md { box-shadow: var(--shadow-md); }
+.elev-lg { box-shadow: var(--shadow-lg); }
+
+/* — tags — */
+.tag {
+  display: inline-flex; align-items: center; font-size: 11px;
+  letter-spacing: 0.02em; padding: 3px 10px;
+  border-radius: calc(var(--radius-md) * 0.75);
+}
+.tag-accent { background: var(--color-accent-800); color: var(--color-accent-100); }
+.tag-accent-2 { background: var(--color-accent-2-800); color: var(--color-accent-2-100); }
+.tag-neutral { background: var(--color-neutral-800); color: var(--color-neutral-100); }
+.tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent); }
+
+/* — navigation — */
+.nav {
+  display: flex; align-items: center; gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: none;
+}
+.nav-brand {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 18px; margin-right: auto;
+}
+.nav a { color: inherit; text-decoration: none; font-size: 14px; }
+.nav a:hover, .nav a[aria-current='page'] { color: var(--color-accent); }
+
+/* — tables — */
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th {
+  text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 60%, transparent);
+  padding: var(--space-2); border-bottom: 1px solid transparent; /* keeps layout; the row paints the fading rule */
+}
+.table td {
+  padding: var(--space-2);
+  border-bottom: 1px solid transparent;
+}
+/* Row rules as row-level strips so the end-fade spans the row, not each cell. */
+.table thead tr {
+  background: linear-gradient(to right,
+    transparent, var(--color-divider) 48px,
+    var(--color-divider) calc(100% - 48px), transparent) no-repeat bottom / 100% 1px;
+}
+.table tbody tr {
+  background: linear-gradient(to right,
+    transparent, color-mix(in srgb, var(--color-text) 8%, transparent) 48px,
+    color-mix(in srgb, var(--color-text) 8%, transparent) calc(100% - 48px), transparent) no-repeat bottom / 100% 1px;
+}
+.table tbody tr:hover {
+  /* the hover tint layers over the row rule, which keeps painting */
+  background:
+    linear-gradient(color-mix(in srgb, var(--color-text) 4%, transparent),
+                    color-mix(in srgb, var(--color-text) 4%, transparent)) no-repeat 0 0 / 100% 100%,
+    linear-gradient(to right,
+      transparent, color-mix(in srgb, var(--color-text) 8%, transparent) 48px,
+      color-mix(in srgb, var(--color-text) 8%, transparent) calc(100% - 48px), transparent) no-repeat bottom / 100% 1px;
+}
+
+/* — dialog — */
+.dialog-backdrop {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  padding: var(--space-4);
+  background: color-mix(in srgb, var(--color-neutral-900) 50%, transparent);
+}
+.dialog {
+  width: min(440px, 100%); display: flex; flex-direction: column; gap: var(--space-3);
+  padding: var(--space-4); border-radius: var(--radius-lg);
+  background: var(--color-surface); box-shadow: var(--shadow-lg);
+}
+.dialog-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 20px;
+}
+.dialog-body { font-size: 14px; opacity: 0.85; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-2); }
+
+</style>
+<script src="assets/design-system.js"></script>
+<script src="assets/tesseract.min.js"></script>
+<style>
+@keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes mic{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1)}}
+html,body{margin:0;height:100%;background:#161826;color:#e9e9ed;overscroll-behavior:none;-webkit-tap-highlight-color:transparent}
+a{color:#9184d9}a:hover{color:#b5abfc}
+</style>
+</helmet>
+
+<div style="height:100dvh;display:flex;justify-content:center;background:#0f111c;font-family:Inter,system-ui,sans-serif">
+  <div style="width:100%;max-width:480px;position:relative;display:flex;flex-direction:column;overflow:hidden;background:#161826">
+
+    <sc-if value="{{ viewWelcome }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;top:0;left:0;right:0;bottom:calc(78px + env(safe-area-inset-bottom));display:flex;flex-direction:column;justify-content:space-between;padding:calc(28px + env(safe-area-inset-top)) 26px 22px;background:radial-gradient(115% 70% at 12% 4%, #2f2a52 0%, #232538 46%, #171927 100%);animation:fadeIn .4s both;z-index:5">
+        <div>
+          <button sc-camel-on-click="{{ openNameSheet }}" style="display:flex;align-items:center;gap:8px;padding:0;background:transparent;border:0;color:#b5abfc;cursor:pointer;font-family:inherit;text-align:left">
+            <span style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase">{{ greeting }}</span>
+            <svg width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L18.5 9.5 14.5 5.5 4 16Z"></path></svg>
+          </button>
+          <div style="font-size:12px;color:rgba(233,233,237,.45);margin-top:5px">{{ today }}</div>
+        </div>
+
+        <sc-if value="{{ featQuote }}" hint-placeholder-val="{{ true }}">
+        <div key="{{ quoteKey }}" style="animation:riseIn .55s cubic-bezier(.2,.7,.3,1) both">
+          <div style="width:54px;height:2px;background:#9184d9;border-radius:2px;margin-bottom:22px"></div>
+          <div style="font-size:28px;line-height:1.3;letter-spacing:-0.015em;font-weight:500;text-wrap:pretty">{{ q.text }}</div>
+          <div style="margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;gap:9px">
+            <span style="font-size:13px;color:rgba(233,233,237,.6)">{{ q.author }}</span>
+            <sc-for list="{{ q.tags }}" as="t" hint-placeholder-count="2">
+              <span style="font-size:11px;padding:3px 10px;border-radius:6px;background:#423a6a;color:#f5f4ff">{{ t }}</span>
+            </sc-for>
+          </div>
+          <div style="margin-top:12px;font-size:11px;color:rgba(233,233,237,.4)">{{ q.origin }}</div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ featMoment }}" hint-placeholder-val="{{ false }}">
+        <div key="{{ quoteKey }}" style="min-height:0;display:flex;flex-direction:column;animation:riseIn .55s cubic-bezier(.2,.7,.3,1) both">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <div style="width:28px;height:2px;background:#9184d9;border-radius:2px"></div>
+            <span style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#b5abfc">{{ m.kicker }}</span>
+          </div>
+          <sc-if value="{{ m.hasPhoto }}" hint-placeholder-val="{{ true }}">
+            <button sc-camel-on-click="{{ openCurrent }}" style="position:relative;display:block;padding:0;border:0;background:transparent;cursor:pointer;border-radius:12px;overflow:hidden">
+              <img sc-camel-src="{{ m.cover }}" alt="" style="display:block;width:100%;height:clamp(150px,36vh,340px);object-fit:cover;border-radius:12px;box-shadow:0 0 0 1px rgba(233,233,237,.08)">
+              <sc-if value="{{ m.manyPhotos }}" hint-placeholder-val="{{ false }}">
+                <span style="position:absolute;right:10px;bottom:10px;font-size:11px;padding:3px 9px;border-radius:6px;background:rgba(22,24,38,.72);color:#e9e9ed">{{ m.morePhotos }}</span>
+              </sc-if>
+            </button>
+          </sc-if>
+          <sc-if value="{{ m.hasText }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:16px;font-size:20px;line-height:1.4;letter-spacing:-0.01em;font-weight:500;text-wrap:pretty;white-space:pre-line">{{ m.welcomeText }}</div>
+          </sc-if>
+          <div style="margin-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:9px">
+            <span style="font-size:12px;color:rgba(233,233,237,.55)">{{ m.when }}</span>
+            <sc-for list="{{ m.tags }}" as="t" hint-placeholder-count="1">
+              <span style="font-size:11px;padding:3px 10px;border-radius:6px;background:#423a6a;color:#f5f4ff">{{ t }}</span>
+            </sc-for>
+          </div>
+        </div>
+        </sc-if>
+
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <button sc-camel-on-click="{{ openCurrent }}" style="min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:500;color:#e9e9ed;background:transparent;border:1px solid rgba(233,233,237,.18);border-radius:8px;cursor:pointer;font-family:inherit" style-hover="background:rgba(233,233,237,.07)">
+            <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L18.5 9.5 14.5 5.5 4 16Z"></path><path d="M13.5 6.5 17 10"></path></svg>
+            {{ openLabel }}
+          </button>
+          <div style="display:flex;gap:10px">
+            <button sc-camel-on-click="{{ shuffle }}" style="width:48px;min-height:48px;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(233,233,237,.18);border-radius:8px;color:#e9e9ed;cursor:pointer" style-hover="background:rgba(233,233,237,.07)">
+              <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.6-5.9"></path><path d="M20 4.5V10h-5.4"></path></svg>
+            </button>
+            <button sc-camel-on-click="{{ goList }}" style="flex:1;min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:500;color:#9184d9;background:transparent;border:1px solid #9184d9;border-radius:8px;cursor:pointer;font-family:inherit" style-hover="background:rgba(145,132,217,.12)">
+              Weiter zur Sammlung
+              <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5 16 12l-6.5 7"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <div style="flex:1;overflow:auto;padding:calc(18px + env(safe-area-inset-top)) 22px 8px;-webkit-overflow-scrolling:touch">
+
+      <sc-if value="{{ viewList }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+            <div>
+              <div style="font-size:27px;letter-spacing:-0.02em;font-weight:500">Sammlung</div>
+              <div style="font-size:12px;color:rgba(233,233,237,.45);margin-top:4px">{{ countLabel }}</div>
+            </div>
+            <button sc-camel-on-click="{{ openBackup }}" aria-label="Sicherung" style="flex:none;min-height:40px;display:flex;align-items:center;gap:7px;padding:0 12px;font-size:12px;color:#e9e9ed;background:transparent;border:1px solid rgba(233,233,237,.16);border-radius:8px;cursor:pointer;font-family:inherit" style-hover="background:rgba(233,233,237,.07)">
+              <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"></path><path d="M7.5 10.5 12 15l4.5-4.5"></path><path d="M5 19h14"></path></svg>
+              Sicherung
+            </button>
+          </div>
+          <sc-if value="{{ backupDue }}" hint-placeholder-val="{{ false }}">
+            <button sc-camel-on-click="{{ openBackup }}" style="display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:12px 14px;border-radius:10px;background:rgba(145,132,217,.12);border:0;box-shadow:inset 0 0 0 1px #5d5294;color:#d2cefd;cursor:pointer;font-family:inherit;font-size:13px" style-hover="background:rgba(145,132,217,.2)">
+              <span style="flex:1">{{ backupDueText }}</span>
+              <span style="color:#b5abfc;white-space:nowrap">Jetzt sichern</span>
+            </button>
+          </sc-if>
+          <div style="display:flex;border:1px solid rgba(233,233,237,.14);border-radius:9px;overflow:hidden">
+            <sc-for list="{{ kindTabs }}" as="tab" hint-placeholder-count="3">
+              <button sc-camel-on-click="{{ tab.pick }}" style="position:relative;flex:1;min-height:40px;font-size:13px;background:transparent;border:0;color:rgba(233,233,237,.82);cursor:pointer;font-family:inherit">
+                <sc-if value="{{ tab.active }}" hint-placeholder-val="{{ false }}">
+                  <span style="position:absolute;inset:3px;border-radius:6px;background:rgba(145,132,217,.2);box-shadow:inset 0 0 0 1px #9184d9"></span>
+                </sc-if>
+                <span style="position:relative">{{ tab.label }}</span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:7px">
+            <sc-for list="{{ moodChips }}" as="chip" hint-placeholder-count="6">
+              <button sc-camel-on-click="{{ chip.toggle }}" style="position:relative;min-height:38px;font-size:12px;padding:9px 13px;border-radius:7px;background:transparent;border:1px solid rgba(233,233,237,.16);color:rgba(233,233,237,.82);cursor:pointer;font-family:inherit" style-hover="background:rgba(233,233,237,.07)">
+                <sc-if value="{{ chip.active }}" hint-placeholder-val="{{ false }}">
+                  <span style="position:absolute;inset:0;border-radius:7px;background:rgba(145,132,217,.2);box-shadow:inset 0 0 0 1px #9184d9"></span>
+                </sc-if>
+                <span style="position:relative">{{ chip.name }}</span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ listItems }}" as="item" hint-placeholder-count="5">
+              <sc-if value="{{ item.isMoment }}" hint-placeholder-val="{{ false }}">
+                <button sc-camel-on-click="{{ item.open }}" style="display:flex;gap:13px;width:100%;text-align:left;padding:12px;border-radius:10px;background:#232532;border:1px solid rgba(233,233,237,.07);border-left:2px solid #796cbf;color:#e9e9ed;cursor:pointer;font-family:inherit" style-hover="background:#292b3c">
+                  <sc-if value="{{ item.hasPhoto }}" hint-placeholder-val="{{ true }}">
+                    <img sc-camel-src="{{ item.cover }}" alt="" style="flex:none;width:72px;height:72px;object-fit:cover;border-radius:8px">
+                  </sc-if>
+                  <span style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:8px">
+                    <span style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#b5abfc">Moment</span>
+                    <span style="font-size:14px;line-height:1.45;text-wrap:pretty">{{ item.short }}</span>
+                    <span style="font-size:11px;color:rgba(233,233,237,.45)">{{ item.meta }}</span>
+                  </span>
+                </button>
+              </sc-if>
+              <sc-if value="{{ item.isQuote }}" hint-placeholder-val="{{ true }}">
+                <button sc-camel-on-click="{{ item.open }}" style="display:flex;flex-direction:column;gap:10px;width:100%;text-align:left;padding:16px;border-radius:10px;background:#232532;border:1px solid rgba(233,233,237,.07);color:#e9e9ed;cursor:pointer;font-family:inherit" style-hover="background:#292b3c">
+                  <span style="font-size:15px;line-height:1.45;text-wrap:pretty">{{ item.short }}</span>
+                  <span style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:11px;color:rgba(233,233,237,.45)">{{ item.meta }}</span>
+                </button>
+              </sc-if>
+            </sc-for>
+          </div>
+          <sc-if value="{{ listEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:26px 4px;font-size:14px;color:rgba(233,233,237,.5);text-wrap:pretty">{{ emptyText }}</div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ viewDetail }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <button sc-camel-on-click="{{ goBack }}" style="display:flex;align-items:center;gap:7px;min-height:44px;font-size:14px;color:#9184d9;background:transparent;border:0;cursor:pointer;font-family:inherit;padding:0">
+              <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5 8 12l6.5 7"></path></svg>
+              Zurück
+            </button>
+            <button sc-camel-on-click="{{ deleteQuote }}" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:transparent;border:0;color:rgba(233,233,237,.45);cursor:pointer" style-hover="color:#e9e9ed">
+              <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 7h14M9 7V5h6v2M7 7l1 12h8l1-12"></path></svg>
+            </button>
+          </div>
+          <sc-if value="{{ curIsQuote }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="font-size:24px;line-height:1.34;letter-spacing:-0.015em;font-weight:500;text-wrap:pretty">{{ q.text }}</div>
+            <div style="margin-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+              <span style="font-size:13px;color:rgba(233,233,237,.6)">{{ q.author }}</span>
+              <sc-for list="{{ q.tags }}" as="t" hint-placeholder-count="2">
+                <span style="font-size:11px;padding:3px 10px;border-radius:6px;background:#423a6a;color:#f5f4ff">{{ t }}</span>
+              </sc-for>
+            </div>
+            <div style="margin-top:12px;font-size:11px;color:rgba(233,233,237,.42)">{{ q.origin }}</div>
+          </div>
+          </sc-if>
+
+          <sc-if value="{{ curIsMoment }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:28px;height:2px;background:#9184d9;border-radius:2px"></div>
+              <span style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#b5abfc">{{ m.kicker }}</span>
+            </div>
+            <div style="font-size:22px;letter-spacing:-0.015em;font-weight:500">{{ m.date }}</div>
+            <sc-for list="{{ m.photoList }}" as="p" hint-placeholder-count="1">
+              <img sc-camel-src="{{ p.url }}" alt="" style="display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 0 0 1px rgba(233,233,237,.08)">
+            </sc-for>
+            <sc-if value="{{ m.hasText }}" hint-placeholder-val="{{ true }}">
+              <div style="font-size:17px;line-height:1.55;text-wrap:pretty;white-space:pre-line">{{ m.text }}</div>
+            </sc-if>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+              <sc-for list="{{ m.tags }}" as="t" hint-placeholder-count="1">
+                <span style="font-size:11px;padding:3px 10px;border-radius:6px;background:#423a6a;color:#f5f4ff">{{ t }}</span>
+              </sc-for>
+              <span style="font-size:11px;color:rgba(233,233,237,.42)">{{ m.origin }}</span>
+            </div>
+          </div>
+          </sc-if>
+
+          <button sc-camel-on-click="{{ shareImage }}" style="min-height:44px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;background:transparent;border:1px solid rgba(233,233,237,.16);border-radius:8px;color:#e9e9ed;cursor:pointer;font-family:inherit" style-hover="background:rgba(233,233,237,.07)">
+            <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"></rect><path d="M4 16l4.5-4.5L13 16"></path><circle cx="15.5" cy="9" r="1.6"></circle></svg>
+            Als Bild teilen
+          </button>
+
+          <div style="height:1px;background:linear-gradient(to right,transparent,rgba(233,233,237,.16) 20px,rgba(233,233,237,.16) calc(100% - 20px),transparent)"></div>
+
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(233,233,237,.5)">Mein Notizbuch</div>
+            <sc-for list="{{ notes }}" as="n" hint-placeholder-count="2">
+              <div style="padding:14px;border-radius:10px;background:#232532;border-left:2px solid #5d5294">
+                <div style="font-size:11px;color:#b5abfc;margin-bottom:6px">{{ n.date }}</div>
+                <div style="font-size:14px;line-height:1.55;color:rgba(233,233,237,.88);text-wrap:pretty">{{ n.text }}</div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ noNotes }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:13px;color:rgba(233,233,237,.45)">{{ noNotesText }}</div>
+            </sc-if>
+            <textarea class="input" value="{{ noteDraft }}" sc-camel-on-change="{{ setNoteDraft }}" placeholder="Notiz von heute — tippen oder diktieren …" style="min-height:88px;font-size:14px;line-height:1.5"></textarea>
+            <sc-if value="{{ dictating }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:8px;background:rgba(145,132,217,.14);box-shadow:inset 0 0 0 1px #5d5294">
+                <span style="display:flex;align-items:flex-end;gap:3px;height:18px">
+                  <span style="width:3px;height:7px;border-radius:2px;background:#b5abfc;animation:mic 1s ease-in-out infinite"></span>
+                  <span style="width:3px;height:16px;border-radius:2px;background:#b5abfc;animation:mic .8s ease-in-out .12s infinite"></span>
+                  <span style="width:3px;height:11px;border-radius:2px;background:#b5abfc;animation:mic 1.1s ease-in-out .22s infinite"></span>
+                  <span style="width:3px;height:18px;border-radius:2px;background:#b5abfc;animation:mic .9s ease-in-out .3s infinite"></span>
+                </span>
+                <span style="flex:1;font-size:13px;color:#d2cefd">{{ dictationStatus }}</span>
+                <button sc-camel-on-click="{{ stopDictation }}" style="min-height:36px;padding:0 12px;font-size:12px;color:#e9e9ed;background:transparent;border:1px solid rgba(233,233,237,.22);border-radius:7px;cursor:pointer;font-family:inherit" style-hover="background:rgba(233,233,237,.08)">Fertig</button>
+              </div>
+            </sc-if>
+            <div style="display:flex;gap:9px">
+              <button sc-camel-on-click="{{ startDictation }}" style="width:46px;min-height:46px;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(233,233,237,.18);border-radius:8px;color:#e9e9ed;cursor:pointer" style-hover="background:rgba(233,233,237,.07)">
+                <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="9" y="3.5" width="6" height="10" rx="3"></rect><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0"></path><path d="M12 18v2.5"></path></svg>
+              </button>
+              <button sc-camel-on-click="{{ saveNote }}" style="flex:1;min-height:46px;font-size:14px;font-weight:500;color:#9184d9;background:transparent;border:1px solid #9184d9;border-radius:8px;cursor:pointer;font-family:inherit" style-hover="background:rgba(145,132,217,.12)">Eintrag speichern</button>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ viewAdd }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="font-size:27px;letter-spacing:-0.02em;font-weight:500">Neu</div>
+          <div style="display:flex;border:1px solid rgba(233,233,237,.14);border-radius:9px;overflow:hidden">
+            <sc-for list="{{ addTabs }}" as="tab" hint-placeholder-count="2">
+              <button sc-camel-on-click="{{ tab.pick }}" style="position:relative;flex:1;min-height:42px;font-size:14px;background:transparent;border:0;color:rgba(233,233,237,.82);cursor:pointer;font-family:inherit">
+                <sc-if value="{{ tab.active }}" hint-placeholder-val="{{ false }}">
+                  <span style="position:absolute;inset:3px;border-radius:6px;background:rgba(145,132,217,.2);box-shadow:inset 0 0 0 1px #9184d9"></span>
+                </sc-if>
+                <span style="position:relative">{{ tab.label }}</span>
+              </button>
+            </sc-for>
+          </div>
+
+          <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:14px;border-radius:10px;background:rgba(145,132,217,.14);box-shadow:inset 0 0 0 1px #5d5294;font-size:13px;color:#d2cefd">{{ busy }}</div>
+          </sc-if>
+          <sc-if value="{{ dictating }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:8px;background:rgba(145,132,217,.14);box-shadow:inset 0 0 0 1px #5d5294">
+              <span style="display:flex;align-items:flex-end;gap:3px;height:18px">
+                <span style="width:3px;height:7px;border-radius:2px;background:#b5abfc;animation:mic 1s ease-in-out infinite"></span>
+                <span style="width:3px;height:16px;border-radius:2px;background:#b5abfc;animation:mic .8s ease-in-out .12s infinite"></span>
+                <span style="width:3px;height:11px;border-radius:2px;background:#b5abfc;animation:mic 1.1s ease-in-out .22s infinite"></span>
+                <span style="width:3px;height:18px;border-radius:2px;background:#b5abfc;animation:mic .9s ease-in-out .3s infinite"></span>
+              </span>
+              <span style="flex:1;font-size:13px;color:#d2cefd">{{ dictationStatus }}</span>
+              <button sc-camel-on-click="{{ stopDictation }}" style="min-height:36px;padding:0 12px;font-size:12px;color:#e9e9ed;background:transparent;border:1px solid rgba(233,233,237,.22);border-radius:7px;cursor:pointer;font-family:inherit" style-hover="background:rgba(233,233,237,.08)">Fertig</button>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ addQuote }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+            <button sc-camel-on-click="{{ pasteFromClipboard }}" style="min-height:60px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;padding:0 14px;border-radius:10px;background:#232532;border:1px solid rgba(233,233,237,.07);color:#e9e9ed;cursor:pointer;font-family:inherit;text-align:left" style-hover="background:#292b3c">
+              <span style="font-size:13px">Einfügen</span>
+              <span style="font-size:10px;color:rgba(233,233,237,.45)">aus WhatsApp</span>
+            </button>
+            <label style="min-height:60px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;padding:0 14px;border-radius:10px;background:#232532;border:1px solid rgba(233,233,237,.07);color:#e9e9ed;cursor:pointer;text-align:left" style-hover="background:#292b3c">
+              <span style="font-size:13px">Foto</span>
+              <span style="font-size:10px;color:rgba(233,233,237,.45)">Text erkennen</span>
+              <input type="file" accept="image/*" sc-camel-on-change="{{ readPhoto }}" style="display:none">
+            </label>
+            <button sc-camel-on-click="{{ startDictationQuote }}" style="min-height:60px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;padding:0 14px;border-radius:10px;background:#232532;border:1px solid rgba(233,233,237,.07);color:#e9e9ed;cursor:pointer;font-family:inherit;text-align:left" style-hover="background:#292b3c">
+              <span style="font-size:13px">Sprechen</span>
+              <span style="font-size:10px;color:rgba(233,233,237,.45)">diktieren</span>
+            </button>
+            <button sc-camel-on-click="{{ focusText }}" style="min-height:60px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;padding:0 14px;border-radius:10px;background:#232532;border:1px solid rgba(233,233,237,.07);color:#e9e9ed;cursor:pointer;font-family:inherit;text-align:left" style-hover="background:#292b3c">
+              <span style="font-size:13px">Selbst tippen</span>
+              <span style="font-size:10px;color:rgba(233,233,237,.45)">leeres Feld</span>
+            </button>
+          </div>
+
+          <div class="field">
+            <label>Spruch</label>
+            <textarea class="input" ref="{{ textRef }}" value="{{ draftText }}" sc-camel-on-change="{{ setDraftText }}" placeholder="Text einfügen oder tippen …" style="min-height:110px;font-size:15px;line-height:1.5"></textarea>
+          </div>
+          <div class="field">
+            <label>Von wem?</label>
+            <input class="input" value="{{ draftAuthor }}" sc-camel-on-change="{{ setDraftAuthor }}" placeholder="Unbekannt" style="min-height:44px;font-size:14px">
+          </div>
+          <div class="field">
+            <label>Stimmung</label>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:2px">
+              <sc-for list="{{ draftMoods }}" as="chip" hint-placeholder-count="6">
+                <button sc-camel-on-click="{{ chip.toggle }}" style="position:relative;min-height:38px;font-size:12px;padding:9px 13px;border-radius:7px;background:transparent;border:1px solid rgba(233,233,237,.16);color:rgba(233,233,237,.82);cursor:pointer;font-family:inherit" style-hover="background:rgba(233,233,237,.07)">
+                  <sc-if value="{{ chip.active }}" hint-placeholder-val="{{ false }}">
+                    <span style="position:absolute;inset:0;border-radius:7px;background:rgba(145,132,217,.2);box-shadow:inset 0 0 0 1px #9184d9"></span>
+                  </sc-if>
+                  <span style="position:relative">{{ chip.name }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+          <button sc-camel-on-click="{{ saveQuote }}" style="min-height:48px;font-size:15px;font-weight:500;color:#9184d9;background:transparent;border:1px solid #9184d9;border-radius:8px;cursor:pointer;font-family:inherit" style-hover="background:rgba(145,132,217,.12)">In die Sammlung legen</button>
+          </div>
+          </sc-if>
+
+          <sc-if value="{{ addMoment }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="font-size:13px;line-height:1.5;color:rgba(233,233,237,.6);text-wrap:pretty">Ein schöner Moment mit Fotos und ein paar Worten. Er taucht irgendwann wieder auf — am Jahrestag ganz sicher.</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+              <label style="min-height:64px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;padding:0 14px;border-radius:10px;background:#232532;border:1px solid rgba(233,233,237,.07);color:#e9e9ed;cursor:pointer;text-align:left" style-hover="background:#292b3c">
+                <span style="font-size:13px">Kamera</span>
+                <span style="font-size:10px;color:rgba(233,233,237,.45)">jetzt fotografieren</span>
+                <input type="file" accept="image/*" capture="environment" sc-camel-on-change="{{ addPhotos }}" style="display:none">
+              </label>
+              <label style="min-height:64px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;padding:0 14px;border-radius:10px;background:#232532;border:1px solid rgba(233,233,237,.07);color:#e9e9ed;cursor:pointer;text-align:left" style-hover="background:#292b3c">
+                <span style="font-size:13px">Galerie</span>
+                <span style="font-size:10px;color:rgba(233,233,237,.45)">Fotos auswählen</span>
+                <input type="file" accept="image/*" multiple="multiple" sc-camel-on-change="{{ addPhotos }}" style="display:none">
+              </label>
+            </div>
+            <sc-if value="{{ hasDraftPhotos }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+                <sc-for list="{{ draftPhotos }}" as="p" hint-placeholder-count="2">
+                  <div style="position:relative;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:#232532">
+                    <img sc-camel-src="{{ p.url }}" alt="" style="display:block;width:100%;height:100%;object-fit:cover">
+                    <button sc-camel-on-click="{{ p.remove }}" aria-label="Foto entfernen" style="position:absolute;top:4px;right:4px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(22,24,38,.78);border:0;color:#e9e9ed;cursor:pointer">
+                      <svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+                    </button>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <div style="font-size:11px;color:rgba(233,233,237,.45);margin-top:-8px">{{ photoHint }}</div>
+
+            <div class="field">
+              <label>Wann war das?</label>
+              <input class="input" type="date" sc-camel-value="{{ momentDay }}" sc-camel-max="{{ maxDay }}" sc-camel-on-change="{{ setMomentDay }}" style="min-height:46px;font-size:15px;color-scheme:dark">
+            </div>
+            <div class="field">
+              <label>Was war schön daran?</label>
+              <textarea class="input" value="{{ momentText }}" sc-camel-on-change="{{ setMomentText }}" placeholder="Ein paar Worte — tippen oder diktieren …" style="min-height:110px;font-size:15px;line-height:1.5"></textarea>
+            </div>
+            <button sc-camel-on-click="{{ startDictationMoment }}" style="min-height:44px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;background:transparent;border:1px solid rgba(233,233,237,.16);border-radius:8px;color:#e9e9ed;cursor:pointer;font-family:inherit" style-hover="background:rgba(233,233,237,.07)">
+              <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="9" y="3.5" width="6" height="10" rx="3"></rect><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0"></path><path d="M12 18v2.5"></path></svg>
+              Diktieren
+            </button>
+            <div class="field">
+              <label>Stimmung (optional)</label>
+              <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:2px">
+                <sc-for list="{{ momentMoods }}" as="chip" hint-placeholder-count="6">
+                  <button sc-camel-on-click="{{ chip.toggle }}" style="position:relative;min-height:38px;font-size:12px;padding:9px 13px;border-radius:7px;background:transparent;border:1px solid rgba(233,233,237,.16);color:rgba(233,233,237,.82);cursor:pointer;font-family:inherit" style-hover="background:rgba(233,233,237,.07)">
+                <sc-if value="{{ chip.active }}" hint-placeholder-val="{{ false }}">
+                  <span style="position:absolute;inset:0;border-radius:7px;background:rgba(145,132,217,.2);box-shadow:inset 0 0 0 1px #9184d9"></span>
+                </sc-if>
+                <span style="position:relative">{{ chip.name }}</span>
+              </button>
+                </sc-for>
+              </div>
+            </div>
+            <button sc-camel-on-click="{{ saveMoment }}" style="min-height:48px;font-size:15px;font-weight:500;color:#9184d9;background:transparent;border:1px solid #9184d9;border-radius:8px;cursor:pointer;font-family:inherit" style-hover="background:rgba(145,132,217,.12)">Moment aufbewahren</button>
+          </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <div style="height:20px"></div>
+    </div>
+
+    <sc-if value="{{ nameSheet }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;z-index:80;display:flex;flex-direction:column;justify-content:flex-end;background:rgba(22,24,38,.72);animation:fadeIn .2s both">
+        <div style="padding:24px 22px calc(26px + env(safe-area-inset-bottom));border-radius:14px 14px 0 0;background:#232532;box-shadow:0 0 0 1px #595d6c,0 -16px 40px rgba(0,0,0,.6);display:flex;flex-direction:column;gap:16px;animation:riseIn .3s cubic-bezier(.2,.7,.3,1) both;max-height:88%;overflow:auto">
+          <div>
+            <div style="font-size:20px;letter-spacing:-0.015em;font-weight:500">Begrüßung</div>
+            <div style="font-size:12px;color:rgba(233,233,237,.5);margin-top:4px">So begrüßt dich die App beim Öffnen.</div>
+          </div>
+          <div class="field">
+            <label>Dein Name</label>
+            <input class="input" value="{{ nameDraft }}" sc-camel-on-change="{{ setNameDraft }}" placeholder="z. B. Amela" style="min-height:46px;font-size:15px">
+          </div>
+          <div class="field">
+            <label>Anrede</label>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:2px">
+              <sc-for list="{{ greetingOpts }}" as="g" hint-placeholder-count="4">
+                <button sc-camel-on-click="{{ g.pick }}" style="position:relative;min-height:38px;font-size:12px;padding:9px 13px;border-radius:7px;background:transparent;border:1px solid rgba(233,233,237,.16);color:rgba(233,233,237,.82);cursor:pointer;font-family:inherit" style-hover="background:rgba(233,233,237,.07)">
+                  <sc-if value="{{ g.active }}" hint-placeholder-val="{{ false }}">
+                    <span style="position:absolute;inset:0;border-radius:7px;background:rgba(145,132,217,.2);box-shadow:inset 0 0 0 1px #9184d9"></span>
+                  </sc-if>
+                  <span style="position:relative">{{ g.label }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+          <sc-if value="{{ customGreetingOn }}" hint-placeholder-val="{{ false }}">
+            <div class="field">
+              <label>Eigene Anrede</label>
+              <input class="input" value="{{ customDraft }}" sc-camel-on-change="{{ setCustomDraft }}" placeholder="z. B. Schön, dass du da bist" style="min-height:46px;font-size:15px">
+            </div>
+          </sc-if>
+          <div style="padding:14px;border-radius:10px;background:#1e2030">
+            <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(233,233,237,.4);margin-bottom:6px">Vorschau</div>
+            <div style="font-size:14px;color:#d2cefd">{{ greetingPreview }}</div>
+          </div>
+          <div style="display:flex;gap:9px">
+            <button sc-camel-on-click="{{ closeNameSheet }}" style="flex:1;min-height:46px;font-size:14px;color:#e9e9ed;background:transparent;border:1px solid rgba(233,233,237,.18);border-radius:8px;cursor:pointer;font-family:inherit" style-hover="background:rgba(233,233,237,.07)">Abbrechen</button>
+            <button sc-camel-on-click="{{ saveName }}" style="flex:1;min-height:46px;font-size:14px;font-weight:500;color:#9184d9;background:transparent;border:1px solid #9184d9;border-radius:8px;cursor:pointer;font-family:inherit" style-hover="background:rgba(145,132,217,.12)">Speichern</button>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ backupSheet }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;z-index:80;display:flex;flex-direction:column;justify-content:flex-end;background:rgba(22,24,38,.72);animation:fadeIn .2s both">
+        <div style="padding:24px 22px calc(26px + env(safe-area-inset-bottom));border-radius:14px 14px 0 0;background:#232532;box-shadow:0 0 0 1px #595d6c,0 -16px 40px rgba(0,0,0,.6);display:flex;flex-direction:column;gap:16px;animation:riseIn .3s cubic-bezier(.2,.7,.3,1) both;max-height:88%;overflow:auto">
+          <div>
+            <div style="font-size:20px;letter-spacing:-0.015em;font-weight:500">Sicherung</div>
+            <div style="font-size:12px;color:rgba(233,233,237,.5);margin-top:4px">{{ lastBackupLabel }}</div>
+          </div>
+          <div style="font-size:13px;line-height:1.55;color:rgba(233,233,237,.72);text-wrap:pretty">Alle Sprüche, Momente, Notizen und Fotos kommen in eine einzige Datei. Sie landet im Download-Ordner. Am besten legst du sie zusätzlich in Google Drive ab oder schickst sie dir selbst — dann ist sie auch bei einem neuen Handy noch da.</div>
+          <sc-if value="{{ backupBusy }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:13px 14px;border-radius:10px;background:rgba(145,132,217,.14);box-shadow:inset 0 0 0 1px #5d5294;font-size:13px;color:#d2cefd">{{ backupBusy }}</div>
+          </sc-if>
+          <button sc-camel-on-click="{{ exportBackup }}" style="min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:500;color:#9184d9;background:transparent;border:1px solid #9184d9;border-radius:8px;cursor:pointer;font-family:inherit" style-hover="background:rgba(145,132,217,.12)">
+            <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"></path><path d="M7.5 10.5 12 15l4.5-4.5"></path><path d="M5 19h14"></path></svg>
+            Sicherung erstellen
+          </button>
+          <label style="min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;color:#e9e9ed;background:transparent;border:1px solid rgba(233,233,237,.18);border-radius:8px;cursor:pointer" style-hover="background:rgba(233,233,237,.07)">
+            <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4"></path><path d="M7.5 8.5 12 4l4.5 4.5"></path><path d="M5 19h14"></path></svg>
+            Sicherung einspielen
+            <input type="file" accept=".json,application/json" sc-camel-on-change="{{ importBackup }}" style="display:none">
+          </label>
+          <div style="font-size:11px;line-height:1.5;color:rgba(233,233,237,.45)">Beim Einspielen wird nichts gelöscht oder überschrieben — fehlende Einträge und Fotos kommen dazu.</div>
+          <button sc-camel-on-click="{{ closeBackup }}" style="min-height:46px;font-size:14px;color:#e9e9ed;background:transparent;border:1px solid rgba(233,233,237,.18);border-radius:8px;cursor:pointer;font-family:inherit" style-hover="background:rgba(233,233,237,.07)">Schließen</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;left:22px;right:22px;bottom:calc(96px + env(safe-area-inset-bottom));padding:13px 15px;border-radius:10px;background:#292b3c;box-shadow:0 0 0 1px #595d6c,0 16px 40px rgba(0,0,0,.6);font-size:13px;animation:fadeIn .25s both;z-index:70">{{ toast }}</div>
+    </sc-if>
+
+    <div style="display:flex;gap:4px;padding:8px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid rgba(233,233,237,.08);background:#1a1c2b;z-index:10">
+      <button sc-camel-on-click="{{ goWelcome }}" style="position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:9px 0;background:transparent;border:0;color:#e9e9ed;cursor:pointer;font-family:inherit;border-radius:10px">
+        <sc-if value="{{ isWelcome }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;inset:0;border-radius:10px;background:rgba(145,132,217,.16)"></span></sc-if>
+        <svg width="21" height="21" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="position:relative"><circle cx="12" cy="12" r="4"></circle><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"></path></svg>
+        <span style="position:relative;font-size:11px">Heute</span>
+      </button>
+      <button sc-camel-on-click="{{ goList }}" style="position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:9px 0;background:transparent;border:0;color:#e9e9ed;cursor:pointer;font-family:inherit;border-radius:10px">
+        <sc-if value="{{ isList }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;inset:0;border-radius:10px;background:rgba(145,132,217,.16)"></span></sc-if>
+        <svg width="21" height="21" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="position:relative"><path d="M4 6.5h16M4 12h16M4 17.5h10"></path></svg>
+        <span style="position:relative;font-size:11px">Sammlung</span>
+      </button>
+      <button sc-camel-on-click="{{ goAdd }}" style="position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:9px 0;background:transparent;border:0;color:#e9e9ed;cursor:pointer;font-family:inherit;border-radius:10px">
+        <sc-if value="{{ isAdd }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;inset:0;border-radius:10px;background:rgba(145,132,217,.16)"></span></sc-if>
+        <svg width="21" height="21" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="position:relative"><path d="M12 5v14M5 12h14"></path></svg>
+        <span style="position:relative;font-size:11px">Neu</span>
+      </button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+const MOODS = ["Trost", "Mut", "Liebe", "Ruhe", "Dankbarkeit", "Kraft"];
+const STORE = "lichtblick.v1";
+const MONTHS = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+const DAYS = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+const fmt = (d) => d.getDate() + ". " + MONTHS[d.getMonth()] + " " + d.getFullYear();
+const pad = (n) => (n < 10 ? "0" : "") + n;
+const isoDay = (d) => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+const parseDay = (s) => { const p = String(s || "").split("-").map(Number); return p.length === 3 && p[0] ? new Date(p[0], p[1] - 1, p[2]) : new Date(); };
+const parseFmt = (s) => {
+  const m = String(s || "").match(/^(\d+)\.\s+(\S+)\s+(\d{4})$/);
+  if (!m) return 0;
+  const mi = MONTHS.indexOf(m[2]);
+  return new Date(+m[3], mi < 0 ? 0 : mi, +m[1]).getTime();
+};
+const MOMENT_CHANCE = 0.35; // so oft zeigt der Start einen Moment statt eines Spruchs (wenn es Momente gibt)
+const MAX_PHOTOS = 6;
+const BACKUP_KEY = "lichtblick.lastBackup";
+const BACKUP_DUE_DAYS = 30; // danach erinnert die Sammlung an eine neue Sicherung
+
+const blobToDataUrl = (blob) => new Promise((res, rej) => {
+  const r = new FileReader();
+  r.onload = () => res(r.result); r.onerror = () => rej(r.error);
+  r.readAsDataURL(blob);
+});
+const dataUrlToBlob = (url) => {
+  const m = String(url).match(/^data:([^;,]*)(;base64)?,(.*)$/);
+  if (!m) throw new Error("kein Bild");
+  const bin = m[2] ? atob(m[3]) : decodeURIComponent(m[3]);
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return new Blob([bytes], { type: m[1] || "image/jpeg" });
+};
+const readLastBackup = () => { try { return localStorage.getItem(BACKUP_KEY) || ""; } catch (e) { return ""; } };
+
+/* ---- Fotos: verkleinert in IndexedDB (nur auf diesem Gerät) ---- */
+const DB_NAME = "lichtblick-fotos", DB_STORE = "fotos";
+let _db = null;
+const openDb = () => _db || (_db = new Promise((res, rej) => {
+  const r = indexedDB.open(DB_NAME, 1);
+  r.onupgradeneeded = () => r.result.createObjectStore(DB_STORE);
+  r.onsuccess = () => res(r.result);
+  r.onerror = () => { _db = null; rej(r.error); };
+}));
+const idb = async (mode, fn) => {
+  const d = await openDb();
+  return new Promise((res, rej) => {
+    const tx = d.transaction(DB_STORE, mode);
+    const req = fn(tx.objectStore(DB_STORE));
+    tx.oncomplete = () => res(req ? req.result : undefined);
+    tx.onerror = () => rej(tx.error);
+    tx.onabort = () => rej(tx.error);
+  });
+};
+const putPhoto = (id, blob) => idb("readwrite", st => st.put(blob, id));
+const getPhoto = (id) => idb("readonly", st => st.get(id));
+const delPhoto = (id) => idb("readwrite", st => st.delete(id));
+
+const shrink = (file) => new Promise((res, rej) => {
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.onload = () => {
+    const max = 1600;
+    const k = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+    const w = Math.round(img.naturalWidth * k), h = Math.round(img.naturalHeight * k);
+    const c = document.createElement("canvas");
+    c.width = w; c.height = h;
+    c.getContext("2d").drawImage(img, 0, 0, w, h);
+    URL.revokeObjectURL(url);
+    c.toBlob(b => b ? res(b) : rej(new Error("toBlob")), "image/jpeg", 0.82);
+  };
+  img.onerror = () => { URL.revokeObjectURL(url); rej(new Error("Bild nicht lesbar")); };
+  img.src = url;
+});
+
+const loadImg = (src) => new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; });
+
+const wrapLines = (ctx, text, maxW) => {
+  const lines = [];
+  String(text).split("\n").forEach(par => {
+    let line = "";
+    par.split(" ").forEach(w => {
+      const t = line ? line + " " + w : w;
+      if (line && ctx.measureText(t).width > maxW) { lines.push(line); line = w; } else line = t;
+    });
+    lines.push(line);
+  });
+  return lines;
+};
+
+const SEED = [
+  { id: 1, text: "\"Ne trazi od sebe da cvjetas usred oluje. Za sada je dovoljno da ostanes ukornenjen.\"", author: "Unbekannt", tags: ["Trost", "Kraft"], source: "aus WhatsApp", date: "18. August 2026",
+    notes: [{ date: "18. August 2026", text: "Von Mama geschickt. Genau an dem Tag, an dem alles zu viel war." }] },
+  { id: 2, text: "\"Ako dans vidis samo tamu, vjeruj da to nije cijelo nebo.\"", author: "Unbekannt", tags: ["Trost", "Ruhe"], source: "aus Foto", date: "9. August 2026", notes: [] },
+  { id: 3, text: "\"Najteze poglavlje cesto nije posljednje - ponekad je samo ono koje te pripremi za najbolje.\"", author: "Unbekannt", tags: ["Mut", "Kraft"], source: "aus Notizen", date: "2. August 2026", notes: [] }
+];
+
+class Component extends DCLogic {
+  state = {
+    quotes: SEED, moments: [], photoUrls: {},
+    name: "", greetingMode: "Hallo meine Liebe", customGreeting: "",
+    view: "welcome", currentKind: "quote", currentId: 1, prevView: "welcome", mood: null, listKind: "alle",
+    nameSheet: false, nameDraft: "", customDraft: "", greetingDraft: "Hallo meine Liebe",
+    noteDraft: "", dictating: false, dictationTarget: "note", dictationStatus: "Ich höre zu …",
+    addMode: "quote", draftText: "", draftAuthor: "", draftMoods: [],
+    momentText: "", momentDay: isoDay(new Date()), momentMoods: [], draftPhotos: [],
+    busy: "", toast: "", quoteKey: 0,
+    backupSheet: false, lastBackup: readLastBackup(), backupBusy: ""
+  };
+
+  componentDidMount() {
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(STORE) || "null"); } catch (e) { saved = null; }
+    const next = saved ? {
+      quotes: saved.quotes && saved.quotes.length ? saved.quotes : SEED,
+      moments: Array.isArray(saved.moments) ? saved.moments : [],
+      name: saved.name || "", greetingMode: saved.greetingMode || "Hallo meine Liebe",
+      customGreeting: saved.customGreeting || ""
+    } : {};
+    const quotes = next.quotes || SEED;
+    const moments = next.moments || [];
+    const ann = this.anniversaries(moments);
+    const pick = ann.length
+      ? { kind: "moment", id: ann[Math.floor(Math.random() * ann.length)].id }
+      : this.pickFeature(quotes, moments, null);
+    this.setState({ ...next, currentKind: pick.kind, currentId: pick.id });
+    this.loadPhotos(moments);
+    if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    }
+  }
+
+  loadPhotos = async (moments) => {
+    const ids = [];
+    moments.forEach(m => (m.photos || []).forEach(p => { if (!this.state.photoUrls[p]) ids.push(p); }));
+    if (!ids.length) return;
+    const urls = {};
+    for (const id of ids) {
+      try { const b = await getPhoto(id); if (b) urls[id] = URL.createObjectURL(b); } catch (e) {}
+    }
+    this.setState(s => ({ photoUrls: { ...s.photoUrls, ...urls } }));
+  };
+
+  persist = (patch) => {
+    this.setState(patch, () => {
+      const s = this.state;
+      try {
+        localStorage.setItem(STORE, JSON.stringify({
+          quotes: s.quotes, moments: s.moments, name: s.name, greetingMode: s.greetingMode, customGreeting: s.customGreeting
+        }));
+      } catch (e) { this.flash("Speichern fehlgeschlagen — Speicher voll?"); }
+    });
+  };
+
+  flash = (msg) => {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: "" }), 2600);
+  };
+
+  greetingLine = (mode, custom, name) => {
+    const n = (name || "").trim();
+    if (mode === "Hallo meine Liebe") return n ? "Hallo " + n + ", meine Liebe" : "Hallo meine Liebe";
+    const anrede = mode === "Eigene" ? ((custom || "").trim() || "Hallo") : mode;
+    return n ? anrede + ", " + n : anrede;
+  };
+
+  /* ---- Was erscheint beim Start? ---- */
+  anniversaries = (moments) => {
+    const t = new Date();
+    return moments.filter(m => {
+      const d = parseDay(m.day);
+      return d.getMonth() === t.getMonth() && d.getDate() === t.getDate() && d.getFullYear() < t.getFullYear();
+    });
+  };
+
+  pickFeature = (quotes, moments, avoid) => {
+    const notAvoid = (kind) => (x) => !avoid || avoid.kind !== kind || avoid.id !== x.id;
+    const q = quotes.filter(notAvoid("quote")), m = moments.filter(notAvoid("moment"));
+    const useMoment = m.length && (!q.length || Math.random() < MOMENT_CHANCE);
+    if (useMoment) return { kind: "moment", id: m[Math.floor(Math.random() * m.length)].id };
+    if (q.length) return { kind: "quote", id: q[Math.floor(Math.random() * q.length)].id };
+    if (moments.length) return { kind: "moment", id: moments[0].id };
+    return { kind: "quote", id: quotes[0].id };
+  };
+
+  shuffle = () => {
+    const s = this.state;
+    const pick = this.pickFeature(s.quotes, s.moments, { kind: s.currentKind, id: s.currentId });
+    this.setState(st => ({ currentKind: pick.kind, currentId: pick.id, view: "welcome", quoteKey: st.quoteKey + 1 }));
+  };
+
+  open = (kind, id) => this.setState(s => ({ currentKind: kind, currentId: id, prevView: s.view === "detail" ? s.prevView : s.view, view: "detail", noteDraft: "" }));
+
+  openNameSheet = () => this.setState(s => ({ nameSheet: true, nameDraft: s.name, customDraft: s.customGreeting, greetingDraft: s.greetingMode }));
+
+  saveName = () => {
+    this.persist({ name: this.state.nameDraft.trim(), greetingMode: this.state.greetingDraft, customGreeting: this.state.customDraft, nameSheet: false });
+    this.flash("Begrüßung gespeichert");
+  };
+
+  /* ---- echtes Diktat (Web Speech API) ---- */
+  startDictation = (target) => {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) { this.flash("Dieser Browser kann nicht zuhören — bitte Chrome auf Android"); return; }
+    const rec = new SR();
+    rec.lang = "de-DE";
+    rec.continuous = true;
+    rec.interimResults = true;
+    const field = target === "quote" ? "draftText" : target === "moment" ? "momentText" : "noteDraft";
+    this._base = this.state[field];
+    rec.onresult = (ev) => {
+      let out = "";
+      for (let i = 0; i < ev.results.length; i++) out += ev.results[i][0].transcript;
+      this.setState({ [field]: (this._base ? this._base.trim() + " " : "") + out.trim() });
+    };
+    rec.onerror = (ev) => {
+      this.setState({ dictating: false });
+      this.flash(ev.error === "not-allowed" ? "Mikrofon nicht erlaubt" : "Aufnahme abgebrochen");
+    };
+    rec.onend = () => this.setState({ dictating: false });
+    this._rec = rec;
+    try { rec.start(); this.setState({ dictating: true, dictationTarget: target, dictationStatus: "Ich höre zu …" }); }
+    catch (e) { this.flash("Aufnahme konnte nicht starten"); }
+  };
+
+  stopDictation = () => {
+    if (this._rec) { try { this._rec.stop(); } catch (e) {} }
+    this.setState({ dictating: false });
+  };
+
+  /* ---- echte Texterkennung (Tesseract, deutsch) ---- */
+  readPhoto = async (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    if (!window.Tesseract) { this.flash("Texterkennung nicht geladen — bitte online neu öffnen"); return; }
+    this.setState({ busy: "Foto wird gelesen … 0 %" });
+    try {
+      const res = await window.Tesseract.recognize(file, "deu", {
+        logger: (m) => {
+          if (m.status === "recognizing text") this.setState({ busy: "Foto wird gelesen … " + Math.round(m.progress * 100) + " %" });
+        }
+      });
+      const text = (res.data.text || "").replace(/\s*\n\s*/g, " ").replace(/\s{2,}/g, " ").trim();
+      if (!text) { this.setState({ busy: "" }); this.flash("Kein Text gefunden"); return; }
+      this.setState({ draftText: text, busy: "" });
+      this.flash("Text erkannt — bitte prüfen");
+    } catch (err) {
+      this.setState({ busy: "" });
+      this.flash("Erkennung fehlgeschlagen");
+    }
+    e.target.value = "";
+  };
+
+  pasteFromClipboard = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      if (!text) { this.flash("Zwischenablage ist leer"); return; }
+      this.setState({ draftText: text.trim() });
+      this.flash("Eingefügt");
+    } catch (err) {
+      this.flash("Bitte im Feld unten lange drücken und einfügen");
+    }
+  };
+
+  saveNote = () => {
+    const text = this.state.noteDraft.trim();
+    if (!text) return;
+    const s = this.state;
+    const key = s.currentKind === "moment" ? "moments" : "quotes";
+    const today = fmt(new Date());
+    this.persist({
+      [key]: s[key].map(x => x.id === s.currentId ? { ...x, notes: [{ date: today, text }, ...(x.notes || [])] } : x),
+      noteDraft: ""
+    });
+    this.flash("Eintrag gespeichert");
+  };
+
+  saveQuote = () => {
+    const text = this.state.draftText.trim();
+    if (!text) { this.flash("Bitte noch den Spruch eintragen"); return; }
+    const s = this.state;
+    this.persist({
+      quotes: [{
+        id: Date.now(), text, author: s.draftAuthor.trim() || "Unbekannt",
+        tags: s.draftMoods.length ? s.draftMoods : ["Kraft"],
+        source: "selbst gespeichert", date: fmt(new Date()), notes: []
+      }].concat(s.quotes),
+      draftText: "", draftAuthor: "", draftMoods: [], view: "list", mood: null, listKind: "alle"
+    });
+    this.flash("Gespeichert — alles an einem Ort");
+  };
+
+  /* ---- Momente: Fotos + Text ---- */
+  addPhotos = async (e) => {
+    const files = Array.from((e.target.files) || []);
+    e.target.value = "";
+    if (!files.length) return;
+    const free = MAX_PHOTOS - this.state.draftPhotos.length;
+    if (free <= 0) { this.flash("Höchstens " + MAX_PHOTOS + " Fotos pro Moment"); return; }
+    const use = files.slice(0, free);
+    this.setState({ busy: use.length > 1 ? "Fotos werden vorbereitet …" : "Foto wird vorbereitet …" });
+    const added = [];
+    for (let i = 0; i < use.length; i++) {
+      try {
+        const blob = await shrink(use[i]);
+        added.push({ id: "f" + Date.now() + "-" + i + "-" + Math.random().toString(36).slice(2, 7), blob, url: URL.createObjectURL(blob) });
+      } catch (err) {}
+    }
+    this.setState(s => ({ draftPhotos: s.draftPhotos.concat(added), busy: "" }));
+    if (!added.length) this.flash("Foto konnte nicht gelesen werden");
+    else if (files.length > use.length) this.flash("Nur " + MAX_PHOTOS + " Fotos pro Moment — der Rest wurde weggelassen");
+  };
+
+  removeDraftPhoto = (id) => this.setState(s => {
+    const p = s.draftPhotos.find(x => x.id === id);
+    if (p) URL.revokeObjectURL(p.url);
+    return { draftPhotos: s.draftPhotos.filter(x => x.id !== id) };
+  });
+
+  saveMoment = async () => {
+    const s = this.state;
+    const text = s.momentText.trim();
+    if (!text && !s.draftPhotos.length) { this.flash("Ein Foto oder ein paar Worte — dann kann der Moment bleiben"); return; }
+    this.setState({ busy: "Moment wird aufbewahrt …" });
+    try {
+      for (const p of s.draftPhotos) await putPhoto(p.id, p.blob);
+    } catch (err) {
+      this.setState({ busy: "" });
+      this.flash("Fotos konnten nicht gespeichert werden — Speicher voll?");
+      return;
+    }
+    if (navigator.storage && navigator.storage.persist) { navigator.storage.persist().catch(() => {}); }
+    const urls = {};
+    s.draftPhotos.forEach(p => { urls[p.id] = p.url; });
+    const m = {
+      id: Date.now(), day: s.momentDay || isoDay(new Date()), text,
+      tags: s.momentMoods.slice(), photos: s.draftPhotos.map(p => p.id),
+      created: fmt(new Date()), notes: []
+    };
+    this.persist({
+      moments: [m].concat(s.moments), photoUrls: { ...s.photoUrls, ...urls },
+      momentText: "", momentDay: isoDay(new Date()), momentMoods: [], draftPhotos: [],
+      busy: "", view: "list", mood: null, listKind: "alle"
+    });
+    this.flash("Moment aufbewahrt — er taucht irgendwann wieder auf");
+  };
+
+  /* ---- Sicherung: alles in einer Datei, inklusive Fotos ---- */
+  exportBackup = async () => {
+    const s = this.state;
+    this.setState({ backupBusy: "Sicherung wird erstellt …" });
+    try {
+      const ids = [];
+      s.moments.forEach(m => (m.photos || []).forEach(p => ids.push(p)));
+      const head = {
+        app: "Lichtblick", version: 1, exported: new Date().toISOString(),
+        data: { quotes: s.quotes, moments: s.moments, name: s.name, greetingMode: s.greetingMode, customGreeting: s.customGreeting }
+      };
+      const headJson = JSON.stringify(head);
+      const parts = [headJson.slice(0, -1), ',"photos":{'];
+      let first = true, missing = 0;
+      for (let i = 0; i < ids.length; i++) {
+        this.setState({ backupBusy: "Fotos werden eingepackt … " + (i + 1) + " von " + ids.length });
+        let blob = null;
+        try { blob = await getPhoto(ids[i]); } catch (e) {}
+        if (!blob) { missing++; continue; }
+        const url = await blobToDataUrl(blob);
+        parts.push((first ? "" : ",") + JSON.stringify(ids[i]) + ":" + JSON.stringify(url));
+        first = false;
+      }
+      parts.push("}}");
+      const file = new Blob(parts, { type: "application/json" });
+      const name = "lichtblick-sicherung-" + isoDay(new Date()) + ".json";
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(file); a.download = name;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 60000);
+      const stamp = new Date().toISOString();
+      try { localStorage.setItem(BACKUP_KEY, stamp); } catch (e) {}
+      this.setState({ backupBusy: "", lastBackup: stamp });
+      this.flash(missing ? "Sicherung gespeichert — " + missing + " Foto(s) fehlten" : "Sicherung gespeichert (Downloads)");
+    } catch (err) {
+      this.setState({ backupBusy: "" });
+      this.flash("Sicherung fehlgeschlagen");
+    }
+  };
+
+  importBackup = async (e) => {
+    const file = e.target.files && e.target.files[0];
+    e.target.value = "";
+    if (!file) return;
+    this.setState({ backupBusy: "Sicherung wird gelesen …" });
+    let b = null;
+    try { b = JSON.parse(await file.text()); } catch (err) { b = null; }
+    if (!b || b.app !== "Lichtblick" || !b.data) {
+      this.setState({ backupBusy: "" });
+      this.flash("Das ist keine Lichtblick-Sicherung");
+      return;
+    }
+    const s = this.state;
+    const inQ = Array.isArray(b.data.quotes) ? b.data.quotes : [];
+    const inM = Array.isArray(b.data.moments) ? b.data.moments : [];
+    const when = b.exported ? fmt(new Date(b.exported)) : "unbekanntem Datum";
+    const ok = window.confirm("Sicherung vom " + when + " einspielen?\n" + inQ.length + " Sprüche, " + inM.length + " Momente.\n\nWas schon in der App ist, bleibt erhalten.");
+    if (!ok) { this.setState({ backupBusy: "" }); return; }
+
+    // zusammenführen: gleiche Einträge nicht doppelt, bei gleichem Eintrag zählen die Notizen beider Seiten
+    const merge = (cur, inc) => {
+      const byId = new Map(cur.map(x => [x.id, x]));
+      let added = 0;
+      inc.forEach(x => {
+        if (!x || x.id == null) return;
+        const have = byId.get(x.id);
+        if (!have) { byId.set(x.id, { ...x, notes: x.notes || [] }); added++; return; }
+        const seen = new Set((have.notes || []).map(n => n.date + "|" + n.text));
+        const extra = (x.notes || []).filter(n => !seen.has(n.date + "|" + n.text));
+        if (extra.length) byId.set(x.id, { ...have, notes: (have.notes || []).concat(extra) });
+      });
+      return { list: Array.from(byId.values()), added };
+    };
+    const q = merge(s.quotes, inQ), m = merge(s.moments, inM);
+
+    const photos = b.photos && typeof b.photos === "object" ? Object.keys(b.photos) : [];
+    let failed = 0;
+    for (let i = 0; i < photos.length; i++) {
+      this.setState({ backupBusy: "Fotos werden zurückgeholt … " + (i + 1) + " von " + photos.length });
+      try { await putPhoto(photos[i], dataUrlToBlob(b.photos[photos[i]])); } catch (err) { failed++; }
+    }
+    if (navigator.storage && navigator.storage.persist) { navigator.storage.persist().catch(() => {}); }
+    const patch = { quotes: q.list, moments: m.list, backupBusy: "", backupSheet: false, view: "list", listKind: "alle", mood: null };
+    if (!s.name && b.data.name) {
+      patch.name = b.data.name;
+      patch.greetingMode = b.data.greetingMode || s.greetingMode;
+      patch.customGreeting = b.data.customGreeting || "";
+    }
+    if (b.exported && (!s.lastBackup || b.exported > s.lastBackup)) {
+      patch.lastBackup = b.exported;
+      try { localStorage.setItem(BACKUP_KEY, b.exported); } catch (err) {}
+    }
+    this.persist(patch);
+    this.loadPhotos(m.list);
+    const plural = (n, one, many) => n + " " + (n === 1 ? one : many);
+    const msg = q.added + m.added === 0 ? "Alles war schon da — nichts doppelt angelegt" : "Eingespielt: " + plural(q.added, "Spruch", "Sprüche") + ", " + plural(m.added, "Moment", "Momente");
+    this.flash(failed ? msg + " · " + failed + " Foto(s) defekt" : msg);
+  };
+
+  deleteCurrent = async () => {
+    const s = this.state;
+    if (s.currentKind === "moment") {
+      const m = s.moments.find(x => x.id === s.currentId);
+      if (!m) return;
+      if (!window.confirm("Diesen Moment mit allen Fotos löschen?")) return;
+      const urls = { ...s.photoUrls };
+      for (const p of (m.photos || [])) {
+        try { await delPhoto(p); } catch (e) {}
+        if (urls[p]) { URL.revokeObjectURL(urls[p]); delete urls[p]; }
+      }
+      this.persist({ moments: s.moments.filter(x => x.id !== m.id), photoUrls: urls, currentKind: "quote", currentId: s.quotes[0].id, view: "list" });
+      this.flash("Gelöscht");
+      return;
+    }
+    const rest = s.quotes.filter(q => q.id !== s.currentId);
+    if (!rest.length) { this.flash("Der letzte Spruch bleibt"); return; }
+    this.persist({ quotes: rest, currentId: rest[0].id, view: "list" });
+    this.flash("Gelöscht");
+  };
+
+  /* ---- Bild teilen: auf Canvas gezeichnet ---- */
+  shareImage = async () => {
+    const s = this.state;
+    const W = 1080, H = 1350;
+    const c = document.createElement("canvas");
+    c.width = W; c.height = H;
+    const ctx = c.getContext("2d");
+    const g = ctx.createLinearGradient(0, 0, W, H);
+    g.addColorStop(0, "#312b52"); g.addColorStop(0.6, "#232538"); g.addColorStop(1, "#1a1c2b");
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    let name = "spruch.png";
+
+    if (s.currentKind === "moment") {
+      const m = s.moments.find(x => x.id === s.currentId);
+      if (!m) return;
+      name = "moment.png";
+      const url = (m.photos || []).map(p => s.photoUrls[p]).find(Boolean);
+      const hasText = !!(m.text || "").trim();
+      let textTop = 150;
+      if (url) {
+        try {
+          const img = await loadImg(url);
+          const boxH = hasText ? 820 : H;
+          const k = Math.max(W / img.naturalWidth, boxH / img.naturalHeight);
+          const dw = img.naturalWidth * k, dh = img.naturalHeight * k;
+          ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W, boxH); ctx.clip();
+          ctx.drawImage(img, (W - dw) / 2, (boxH - dh) / 2, dw, dh);
+          ctx.restore();
+          const fade = ctx.createLinearGradient(0, boxH - 260, 0, boxH);
+          fade.addColorStop(0, "rgba(26,28,43,0)"); fade.addColorStop(1, "rgba(26,28,43,0.92)");
+          ctx.fillStyle = fade; ctx.fillRect(0, boxH - 260, W, 260);
+          textTop = boxH + 40;
+        } catch (e) {}
+      }
+      const date = fmt(parseDay(m.day));
+      if (hasText) {
+        ctx.fillStyle = "#e9e9ed";
+        ctx.font = "500 46px Inter, system-ui, sans-serif";
+        let lines = wrapLines(ctx, m.text, W - 192);
+        const maxLines = url ? 6 : 14;
+        if (lines.length > maxLines) { lines = lines.slice(0, maxLines); lines[maxLines - 1] += " …"; }
+        let y = textTop + 50;
+        lines.forEach(l => { ctx.fillText(l, 96, y); y += 62; });
+        ctx.fillStyle = "rgba(233,233,237,0.6)";
+        ctx.font = "400 32px Inter, system-ui, sans-serif";
+        ctx.fillText(date, 96, Math.min(y + 30, H - 70));
+      } else {
+        ctx.fillStyle = "rgba(233,233,237,0.85)";
+        ctx.font = "400 34px Inter, system-ui, sans-serif";
+        ctx.fillText(date, 96, H - 80);
+      }
+    } else {
+      const q = s.quotes.find(x => x.id === s.currentId) || s.quotes[0];
+      ctx.fillStyle = "#9184d9"; ctx.fillRect(96, H - 470, 120, 6);
+      ctx.fillStyle = "#e9e9ed";
+      ctx.font = "500 62px Inter, system-ui, sans-serif";
+      const lines = wrapLines(ctx, q.text, W - 192);
+      let y = H - 400;
+      lines.forEach(l => { ctx.fillText(l, 96, y); y += 84; });
+      ctx.fillStyle = "rgba(233,233,237,0.6)";
+      ctx.font = "400 34px Inter, system-ui, sans-serif";
+      ctx.fillText(q.author, 96, y + 32);
+    }
+
+    const blob = await new Promise(res => c.toBlob(res, "image/png"));
+    const file = new File([blob], name, { type: "image/png" });
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      try { await navigator.share({ files: [file] }); return; } catch (e) { return; }
+    }
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob); a.download = name; a.click();
+    this.flash("Bild gespeichert");
+  };
+
+  renderVals() {
+    const s = this.state;
+    const now = new Date();
+    const short = (t, n) => t.length > n ? t.slice(0, n - 2).trim() + " …" : t;
+    const noteLabel = (n) => n === 0 ? "keine Notiz" : n === 1 ? "1 Notiz" : n + " Notizen";
+    const photoLabel = (n) => n === 0 ? "" : n === 1 ? "1 Foto" : n + " Fotos";
+    const yearsAgo = (d) => {
+      const y = now.getFullYear() - d.getFullYear();
+      const sameDay = d.getMonth() === now.getMonth() && d.getDate() === now.getDate();
+      if (sameDay && y === 1) return "Heute vor einem Jahr";
+      if (sameDay && y > 1) return "Heute vor " + y + " Jahren";
+      return "";
+    };
+
+    const wrapQ = (x) => ({
+      ...x, kind: "quote", isMoment: false, isQuote: true, short: short(x.text, 100),
+      meta: x.author + " · " + noteLabel(x.notes.length) + " · " + x.source,
+      origin: "Gespeichert am " + x.date + " · " + x.source,
+      sort: parseFmt(x.date) + (x.id > 1e12 ? x.id % 86400000 : 0),
+      open: () => this.open("quote", x.id)
+    });
+    const wrapM = (x) => {
+      const d = parseDay(x.day);
+      const photoList = (x.photos || []).map(p => ({ id: p, url: s.photoUrls[p] || "" })).filter(p => p.url);
+      const notes = x.notes || [];
+      const text = (x.text || "").trim();
+      const ago = yearsAgo(d);
+      return {
+        ...x, kind: "moment", isMoment: true, isQuote: false, notes,
+        text, hasText: !!text, short: text ? short(text, 110) : "Ein Moment ohne Worte",
+        welcomeText: short(text, 170),
+        date: fmt(d), photoList, hasPhoto: photoList.length > 0,
+        cover: photoList.length ? photoList[0].url : "",
+        manyPhotos: photoList.length > 1, morePhotos: "+" + (photoList.length - 1),
+        kicker: ago || "Ein Moment von dir",
+        when: fmt(d) + (photoLabel((x.photos || []).length) ? " · " + photoLabel((x.photos || []).length) : ""),
+        meta: fmt(d) + " · " + [photoLabel((x.photos || []).length), noteLabel(notes.length)].filter(Boolean).join(" · "),
+        origin: "Aufbewahrt am " + (x.created || fmt(d)),
+        sort: d.getTime() + (x.id % 86400000),
+        open: () => this.open("moment", x.id)
+      };
+    };
+
+    const isMomentCur = s.currentKind === "moment" && s.moments.some(x => x.id === s.currentId);
+    const qRaw = (!isMomentCur && s.quotes.find(x => x.id === s.currentId)) || s.quotes[0];
+    const q = wrapQ(qRaw);
+    const mRaw = isMomentCur ? s.moments.find(x => x.id === s.currentId) : null;
+    const m = mRaw ? wrapM(mRaw) : { photoList: [], tags: [], notes: [] };
+    const curNotes = isMomentCur ? m.notes : q.notes;
+
+    const moodOk = (x) => !s.mood || (x.tags || []).indexOf(s.mood) !== -1;
+    let items = [];
+    if (s.listKind !== "momente") items = items.concat(s.quotes.filter(moodOk).map(wrapQ));
+    if (s.listKind !== "sprueche") items = items.concat(s.moments.filter(moodOk).map(wrapM));
+    items.sort((a, b) => b.sort - a.sort);
+
+    const nQ = s.quotes.length, nM = s.moments.length;
+    const counts = [nQ === 1 ? "1 Spruch" : nQ + " Sprüche", nM === 1 ? "1 Moment" : nM + " Momente"];
+    const emptyText = s.listKind === "momente" && !s.mood
+      ? "Noch keine Momente. Unter „Neu“ kannst du Fotos und ein paar Worte aufbewahren."
+      : "Hier ist noch nichts gespeichert.";
+
+    const chipToggle = (key, m2) => () => this.setState(st => ({ [key]: st[key].indexOf(m2) !== -1 ? st[key].filter(x => x !== m2) : st[key].concat([m2]) }));
+
+    return {
+      greeting: this.greetingLine(s.greetingMode, s.customGreeting, s.name),
+      greetingPreview: this.greetingLine(s.greetingDraft, s.customDraft, s.nameDraft),
+      today: DAYS[now.getDay()] + ", " + now.getDate() + ". " + MONTHS[now.getMonth()],
+      q, m, quoteKey: "q" + s.quoteKey,
+      featQuote: !isMomentCur, featMoment: isMomentCur,
+      curIsQuote: !isMomentCur, curIsMoment: isMomentCur,
+      openLabel: isMomentCur ? "Moment ansehen" : "Notiz dazu schreiben",
+      noNotesText: isMomentCur ? "Noch keine Notiz. Möchtest du etwas dazu festhalten?" : "Noch keine Notiz. Was fällt dir zu diesem Spruch ein?",
+      backupSheet: s.backupSheet, backupBusy: s.backupBusy,
+      lastBackupLabel: s.lastBackup ? "Zuletzt gesichert am " + fmt(new Date(s.lastBackup)) : "Noch nie gesichert",
+      backupDue: (s.moments.length > 0 || s.quotes.some(x => x.id > 1e12)) &&
+        (!s.lastBackup || (now - new Date(s.lastBackup)) > BACKUP_DUE_DAYS * 86400000),
+      backupDueText: s.lastBackup ? "Letzte Sicherung ist über einen Monat her" : "Deine Erinnerungen sind noch nicht gesichert",
+      openBackup: () => this.setState({ backupSheet: true }),
+      closeBackup: () => { if (!this.state.backupBusy) this.setState({ backupSheet: false }); },
+      exportBackup: this.exportBackup,
+      importBackup: this.importBackup,
+      countLabel: counts.join(" · ") + " · " + (s.mood ? "Stimmung: " + s.mood : "alle Stimmungen"),
+      notes: curNotes, noNotes: curNotes.length === 0,
+      listItems: items, listEmpty: items.length === 0, emptyText,
+      kindTabs: [["alle", "Alle"], ["sprueche", "Sprüche"], ["momente", "Momente"]].map(([k, label]) => ({
+        label, active: s.listKind === k, pick: () => this.setState({ listKind: k })
+      })),
+      addTabs: [["quote", "Spruch"], ["moment", "Moment"]].map(([k, label]) => ({
+        label, active: s.addMode === k, pick: () => this.setState({ addMode: k })
+      })),
+      viewWelcome: s.view === "welcome", viewList: s.view === "list", viewDetail: s.view === "detail", viewAdd: s.view === "add",
+      addQuote: s.addMode === "quote", addMoment: s.addMode === "moment",
+      isWelcome: s.view === "welcome", isList: s.view === "list", isAdd: s.view === "add",
+      nameSheet: s.nameSheet, nameDraft: s.nameDraft, customDraft: s.customDraft,
+      customGreetingOn: s.greetingDraft === "Eigene",
+      greetingOpts: ["Hallo meine Liebe", "Guten Morgen", "Schön, dass du da bist", "Eigene"].map(g => ({
+        label: g, active: s.greetingDraft === g, pick: () => this.setState({ greetingDraft: g })
+      })),
+      moodChips: MOODS.map(m2 => ({ name: m2, active: s.mood === m2, toggle: () => this.setState({ mood: s.mood === m2 ? null : m2 }) })),
+      draftMoods: MOODS.map(m2 => ({ name: m2, active: s.draftMoods.indexOf(m2) !== -1, toggle: chipToggle("draftMoods", m2) })),
+      momentMoods: MOODS.map(m2 => ({ name: m2, active: s.momentMoods.indexOf(m2) !== -1, toggle: chipToggle("momentMoods", m2) })),
+      draftPhotos: s.draftPhotos.map(p => ({ url: p.url, remove: () => this.removeDraftPhoto(p.id) })),
+      hasDraftPhotos: s.draftPhotos.length > 0,
+      photoHint: s.draftPhotos.length ? s.draftPhotos.length + " von " + MAX_PHOTOS + " Fotos" : "Bis zu " + MAX_PHOTOS + " Fotos",
+      momentText: s.momentText, momentDay: s.momentDay, maxDay: isoDay(now),
+      noteDraft: s.noteDraft, draftText: s.draftText, draftAuthor: s.draftAuthor,
+      dictating: s.dictating, dictationStatus: s.dictationStatus, busy: s.busy, toast: s.toast,
+      textRef: (el) => { this._text = el; },
+      focusText: () => { if (this._text) this._text.focus(); },
+      setNameDraft: (e) => this.setState({ nameDraft: e.target.value }),
+      setCustomDraft: (e) => this.setState({ customDraft: e.target.value }),
+      setNoteDraft: (e) => this.setState({ noteDraft: e.target.value }),
+      setDraftText: (e) => this.setState({ draftText: e.target.value }),
+      setDraftAuthor: (e) => this.setState({ draftAuthor: e.target.value }),
+      setMomentText: (e) => this.setState({ momentText: e.target.value }),
+      setMomentDay: (e) => this.setState({ momentDay: e.target.value || isoDay(new Date()) }),
+      openNameSheet: this.openNameSheet,
+      closeNameSheet: () => this.setState({ nameSheet: false }),
+      saveName: this.saveName,
+      startDictation: () => this.startDictation("note"),
+      startDictationQuote: () => this.startDictation("quote"),
+      startDictationMoment: () => this.startDictation("moment"),
+      stopDictation: this.stopDictation,
+      readPhoto: this.readPhoto,
+      addPhotos: this.addPhotos,
+      pasteFromClipboard: this.pasteFromClipboard,
+      shareImage: this.shareImage,
+      deleteQuote: this.deleteCurrent,
+      shuffle: this.shuffle,
+      saveNote: this.saveNote,
+      saveQuote: this.saveQuote,
+      saveMoment: this.saveMoment,
+      openCurrent: () => this.setState(st => ({ prevView: st.view, view: "detail", noteDraft: "" })),
+      goWelcome: () => this.setState({ view: "welcome" }),
+      goList: () => this.setState({ view: "list" }),
+      goAdd: () => this.setState({ view: "add" }),
+      goBack: () => this.setState(st => ({ view: st.prevView === "detail" ? "list" : st.prevView }))
+    };
+  }
+}
+</script>
+
+
+</body></html>
